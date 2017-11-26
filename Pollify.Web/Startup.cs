@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using Pollify.Web.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Pollify.Web.Infrastructure;
 
 namespace Pollify.Web
 {
@@ -21,6 +25,14 @@ namespace Pollify.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAppServices();
+            services.AddIdentity<IdentityUser<int>, IdentityRole<int>>();
+
+            services.AddDbContext<DataEntities>(options => options.UseSqlServer(Configuration.GetConnectionString("DataEntities")));
+            services.ConfigureApplicationCookie(options =>
+            {
+
+            });
             services.AddMvc();
         }
 
@@ -35,6 +47,8 @@ namespace Pollify.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseAuthentication();
 
             app.UseStaticFiles();
 

@@ -10,9 +10,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
   </ItemGroup>
 
-  <ProjectExtensions><VisualStudio><UserProperties _1bowerrc__JSONSchema="http://json.schemastore.org/bowerrc" /></VisualStudio></ProjectExtensions>
+  <ItemGroup>
+    <ProjectReference Include="..\Pollify.Infrastructure\Pollify.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>
