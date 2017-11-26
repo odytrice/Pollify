@@ -10,6 +10,7 @@
         @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         <link href="~/css/flatly.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,6 +18,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link href="~/css/flatly.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     </environment>
     <style>
         code {
@@ -44,16 +46,20 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://builtwithbootstrap.com/" target="_blank">Login</a></li>
-                </ul>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    </ul>
 
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="http://builtwithbootstrap.com/" target="_blank">Logout</a></li>
+                    </ul>
+                }
             </div>
         </div>
     </div>
