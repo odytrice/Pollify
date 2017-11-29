@@ -14,7 +14,7 @@ namespace Pollify.Web
         {
             if (operation.Succeeded)
             {
-                return new IdentityResult();
+                return IdentityResult.Success;
             }
             else
             {

@@ -50,14 +50,17 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                        <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                        <li is-active-route asp-controller="home" asp-action="dashboard">
+                            <a asp-area="" asp-controller="home" asp-action="dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
+                        </li>
+                        @*<li is-active-route asp-controller="poll" asp-action="index">
+                            <a asp-area="" asp-controller="poll" asp-action="index"><i class="fa fa-bar-chart"></i>Polls</a>
+                        </li>*@
                     </ul>
 
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="http://builtwithbootstrap.com/" target="_blank">Logout</a></li>
+                        <li><a asp-area="" asp-controller="account" asp-action="logout">Logout</a></li>
                     </ul>
                 }
             </div>

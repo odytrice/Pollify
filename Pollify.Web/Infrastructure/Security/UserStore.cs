@@ -83,7 +83,7 @@ namespace Pollify.Web.Infrastructure.Security
 
         public Task SetNormalizedUserNameAsync(UserModel user, string normalizedName, CancellationToken cancellationToken)
         {
-            return Task.FromResult(true);
+            return Task.FromResult(user.Email = normalizedName);
         }
 
         public Task SetPasswordHashAsync(UserModel user, string passwordHash, CancellationToken cancellationToken)
