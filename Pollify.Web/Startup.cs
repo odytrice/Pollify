@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Pollify.Web.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Pollify.Web.Infrastructure;
+using Pollify.Web.Models;
 
 namespace Pollify.Web
 {
@@ -26,7 +27,7 @@ namespace Pollify.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAppServices();
-            services.AddIdentity<IdentityUser<int>, IdentityRole<int>>();
+            services.AddIdentity<UserModel, string>();
 
             services.AddDbContext<DataEntities>(options => options.UseSqlServer(Configuration.GetConnectionString("DataEntities")));
             services.ConfigureApplicationCookie(options =>

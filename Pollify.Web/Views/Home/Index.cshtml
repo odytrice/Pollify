@@ -68,7 +68,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 text-right">
-                    <a class="btn btn-success" asp-controller="account" asp-action="login"><i class="fa fa-lock"></i>Login</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="btn btn-success" asp-action="dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
+                        <a class="btn btn-success" asp-controller="account" asp-action="logout"><i class="fa fa-sign-out"></i>Log out</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success" asp-controller="account" asp-action="login"><i class="fa fa-lock"></i>Login</a>
+                    }
+                    
                 </div>
             </div>
         </div>

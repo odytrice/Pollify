@@ -1,28 +1,24 @@
-﻿@model LoginViewModel
+﻿@model RegisterViewModel
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Register User";
 }
-
-
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         
         <div class="row">
             <div class="col-md-offset-2">
-                <h2>Login</h2>
+                <h2>Register</h2>
                 <hr/>
                 <div asp-validation-summary="All" class="text-danger"></div>
             </div>
         </div>
         
-        
-
-        <form class="form-horizontal">
+        <form method="post" class="form-horizontal">
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-7">
-                    <input asp-for="Email" type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Email">
                 </div>
             </div>
             <div class="form-group">
@@ -32,18 +28,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-7">
-                    <div class="checkbox">
-                        <label>
-                            <input asp-for="RememberMe" type="checkbox"> Remember me
-                        </label>
-                    </div>
+                <label for="confirmpassword" class="col-sm-2 control-label">Confirm Password</label>
+                <div class="col-sm-7">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" id="confirmpassword" placeholder="Confirm Password">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i>Sign in</button>
-                    <a asp-action="register" class="btn btn-default"><i class="fa fa-edit"></i>Register</a>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-edit"></i>Register</button>
+                    <a asp-action="login" class="btn btn-default"><i class="fa fa-arrow-left"></i>Back</a>
                 </div>
             </div>
         </form>

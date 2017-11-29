@@ -5,79 +5,105 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
+using Pollify.Domain.Interface.Repositories;
 
 namespace Pollify.Web.Infrastructure.Security
 {
-    public class UserStore : IUserPasswordStore<UserModel>
+    public class UserStore : IUserStore<UserModel>, IUserPasswordStore<UserModel>
     {
-        public Task<IdentityResult> CreateAsync(UserModel user, CancellationToken cancellationToken)
+        private IUserRepository _repo;
+
+        public UserStore(IUserRepository repo)
         {
-            throw new NotImplementedException();
+            _repo = repo;
         }
 
-        public Task<IdentityResult> DeleteAsync(UserModel user, CancellationToken cancellationToken)
+        public async Task<IdentityResult> CreateAsync(UserModel user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var operation = await Operation.Run(async () =>
+            {
+                var newUser = await _repo.CreateUser(user.Map());
+                user.Id = newUser.UserId;
+            });
+
+            return operation.ToIdentity();
+        }
+
+        public async Task<IdentityResult> DeleteAsync(UserModel user, CancellationToken cancellationToken)
+        {
+            var operation = await Operation.Run(async () =>
+            {
+                await _repo.DeleteUser(user.Id);
+            });
+            return operation.ToIdentity();
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            // Do Nothing
         }
 
-        public Task<UserModel> FindByIdAsync(string userId, CancellationToken cancellationToken)
+        public async Task<UserModel> FindByIdAsync(string userId, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var user = await _repo.GetUserById(userId);
+            return user.Map();
         }
 
-        public Task<UserModel> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
+        public async Task<UserModel> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var user = await _repo.GetUserByEmail(normalizedUserName);
+            return user.Map();
         }
 
         public Task<string> GetNormalizedUserNameAsync(UserModel user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(user.UserName);
         }
 
         public Task<string> GetPasswordHashAsync(UserModel user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(user.PasswordHash);
         }
 
-        public Task<string> GetUserIdAsync(UserModel user, CancellationToken cancellationToken)
+        public async Task<string> GetUserIdAsync(UserModel model, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var user = await _repo.GetUserByEmail(model.UserName);
+            return user?.UserId;
         }
 
         public Task<string> GetUserNameAsync(UserModel user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(user.Email);
         }
 
         public Task<bool> HasPasswordAsync(UserModel user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(true);
         }
 
         public Task SetNormalizedUserNameAsync(UserModel user, string normalizedName, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(true);
         }
 
         public Task SetPasswordHashAsync(UserModel user, string passwordHash, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(user.PasswordHash = passwordHash);
         }
 
         public Task SetUserNameAsync(UserModel user, string userName, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(true);
         }
 
-        public Task<IdentityResult> UpdateAsync(UserModel user, CancellationToken cancellationToken)
+        public async Task<IdentityResult> UpdateAsync(UserModel user, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var operation = await Operation.Run(async () =>
+            {
+                return await _repo.UpdateUser(user.Map());
+            });
+
+            return operation.ToIdentity();
         }
     }
 }

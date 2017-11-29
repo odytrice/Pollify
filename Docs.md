@@ -63,7 +63,7 @@ The initial intention for this was to help a group of friends decide what kind o
     - **Immutable**:  A Poll whose Answers are locked and can only be edited by the Initiator
 
 
-Status
+- **Status**
 
 
 Active Poll: A Poll that is still awaiting responses from some of the Respondents
