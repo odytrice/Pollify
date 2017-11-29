@@ -66,103 +66,86 @@ The initial intention for this was to help a group of friends decide what kind o
 - **Status**
 
 
-Active Poll: A Poll that is still awaiting responses from some of the Respondents
+    - **Active Poll**: A Poll that is still awaiting responses from some of the Respondents
 
-Completed Poll: A Poll that has received all requested responses from all Respondents.
-
-
-Views
+    - **Completed Poll**: A Poll that has received all requested responses from all Respondents.
 
 
-
-Dashboard
-
-
+# Views
+## Dashboard
 
 The Dashboard will consist of 3 panels whose visibility is controlled by tabs on the bottom of the screen:
 
 
-The Feed: Displays Polls that the User's Friends are participating in, either as Initiators or Participants. Upon clicking on a Poll, it will open the Poll View
+1. The Feed: Displays Polls that the User's Friends are participating in, either as Initiators or Participants. Upon clicking on a Poll, it will open the Poll View
 
-The User's Active Polls ' Polls that are still running in which the User is either an Initiator or a Respondent. Each Poll will be appropriately labeled with the User's role. Upon clicking on one Poll, it will open the Poll View
+2. The User's Active Polls ' Polls that are still running in which the User is either an Initiator or a Respondent. Each Poll will be appropriately labeled with the User's role. Upon clicking on one Poll, it will open the Poll View
 
-The User's Completed Polls ' Polls that the User has participated in in the past, either as an Initiator or Respondent. Each Poll will be appropriately labeled with the User's role. Upon clicking on one Poll, it will open the Poll View
+3. The User's Completed Polls ' Polls that the User has participated in in the past, either as an Initiator or Respondent. Each Poll will be appropriately labeled with the User's role. Upon clicking on one Poll, it will open the Poll View
 
 
 
-Poll View
+## Poll View
 
 
 
 The Poll View is displayed when the user clicks on a Poll in the Feed, the Active Poll Panel or the Completed Poll Panel. It will display:
 
 
-The Initiator and list of Respondents
+1. The Initiator and list of Respondents
 
-The Question
+2. The Question
 
-The Answers with
+3. The Answers with
+    1. The number and list of Respondents that selected each Answer underneath it if the Poll is Transparent
 
+    2. The number of Respondents that selected each Answer next to it if the Poll is Translucent
 
-The number and list of Respondents that selected each Answer underneath it if the Poll is Transparent
-
-The number of Respondents that selected each Answer next to it if the Poll is Translucent
-
-Just the Answers if the Poll is Opaque
+    3. Just the Answers if the Poll is Opaque
 
 
-Whether or not the current User is the Initiator or one of the Respondents
+4. Whether or not the current User is the Initiator or one of the Respondents
 
-If the User is the Initiator ' show a 'Close' button to terminate the Poll with the Answers as they currently stand.
+5. If the User is the Initiator ' show a 'Close' button to terminate the Poll with the Answers as they currently stand.
 
-If the User is requested to take action ' ie if he is a Respondent that has not yet selected an Answer to the Question
-
-
-There should be an appropriate flag on the question:
-
-There should be a 'Withdraw' button to remove himself from the list of Respondents to this question
+6. If the User is requested to take action ' ie if he is a Respondent that has not yet selected an Answer to the Question
 
 
-A flag if the User is able to take action ' ie if the Poll is Open and the User is able to provide an Answer but has not yet done so. Note that since the User is not a Respondent in this case, he is not required to take action for the Poll to be able to close. This is therefore a less important course of action so the flag should be less prominent as the Requested Action Flag.
+    1. There should be an appropriate flag on the question:
+
+    2. There should be a 'Withdraw' button to remove himself from the list of Respondents to this question
 
 
-Process
+7. A flag if the User is able to take action ' ie if the Poll is Open and the User is able to provide an Answer but has not yet done so. Note that since the User is not a Respondent in this case, he is not required to take action for the Poll to be able to close. This is therefore a less important course of action so the flag should be less prominent as the Requested Action Flag.
 
 
-
-Opening the App
-
-
+# Process
+## Opening the App
 
 Upon opening the app, a User is presented with the Feed. Also, 
+1. If he is a Respondent to any Active Questions, there should be a notification on the 
 
+2. Active Polls tab.
 
-If he is a Respondent to any Active Questions, there should be a notification on the 
-
-Active Polls tab.
-
-If he is a Respondent to any Active Polls that he has not yet responded to, the notification on the Active Polls tab should display the number of such Polls.
+3. If he is a Respondent to any Active Polls that he has not yet responded to, the notification on the Active Polls tab should display the number of such Polls.
 
 
 
 Creating a new Poll
 
+1. The Initiator of the Poll opens the app and select 'Create New Poll'.
+
+2. He is presented with the Create Screen prompting him to write the Question, and provide the possible Answers. Answers can be text, images from camera or gallery, or a combination of both.
+
+3. He is presented with the Config Screen to input the Poll's Privacy (Global, Public or Private), Openness (Open or Closed), Transparency (Transparent, Translucent, or Opaque), Editability (Editable, Promptable, or Immutable) and which Notifications he wishes to receive (see list of Optional Notifications in the Initiator Notifications section). 
+
+4. He is presented with a screen displaying a list of all his Friends prompting him to check which ones he wishes to make Respondents to the Poll.
+
+5. He then submits
 
 
 
-The Initiator of the Poll opens the app and select 'Create New Poll'.
-
-He is presented with the Create Screen prompting him to write the Question, and provide the possible Answers. Answers can be text, images from camera or gallery, or a combination of both.
-
-He is presented with the Config Screen to input the Poll's Privacy (Global, Public or Private), Openness (Open or Closed), Transparency (Transparent, Translucent, or Opaque), Editability (Editable, Promptable, or Immutable) and which Notifications he wishes to receive (see list of Optional Notifications in the Initiator Notifications section). 
-
-He is presented with a screen displaying a list of all his Friends prompting him to check which ones he wishes to make Respondents to the Poll.
-
-He then submits
-
-
-
-Notifications
+# Notifications
 
 
 
