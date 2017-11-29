@@ -29,7 +29,7 @@ namespace Pollify.Web
             services.AddAppServices();
             services.AddIdentity<UserModel, string>();
 
-            services.AddDbContext<DataEntities>(options => options.UseSqlServer(Configuration.GetConnectionString("DataEntities")));
+            services.AddDatabase(Configuration);
             services.ConfigureApplicationCookie(options =>
             {
 
@@ -48,6 +48,8 @@ namespace Pollify.Web
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.ApplicationServices.MigrateDatabase();
 
             app.UseAuthentication();
 
